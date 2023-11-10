@@ -1,4 +1,4 @@
-import express, { Express } from 'express';
+import express, { Express} from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
@@ -8,19 +8,24 @@ import {
   MONGODB_CONNECTION_OPTIONS,
   errorHandler,
   responseTransformer,
+  swagger
 } from './core';
+
 import { postRouter } from './modules';
 
 dotenv.config();
 
 const app: Express = express();
 
+
+swagger(app);
 app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({extended: false}));
 app.use(responseTransformer);
 
-app.use('/', postRouter);
+app.use('/post', postRouter);
 
 app.use(errorHandler);
 

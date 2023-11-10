@@ -7,4 +7,13 @@ export class ResponseStatusMessage {
   public static readonly 205: string = 'Reset Content';
 }
 
+export enum RESPONSE_STATUS{
+  SUCCESS=200,
+  CREATED=201,
+  ACCEPTED=202,
+  NO_CONTENT=203,
+  NON_AUTHORITATIVE_INFORMATION =204,
+  RESET_CONTENT=205,
+}
+
 export type ResponseStatusCode = keyof typeof ResponseStatusMessage;
